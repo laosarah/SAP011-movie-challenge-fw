@@ -1,0 +1,26 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.name {
+    font-family: Helvetica;
+    font-size: 2.5rem;
+    
+}
+
+.navbar {
+    background-color: #605f5f;
+    display: flex;
+}
+
+.navbar-btn {
+    display: flex;
+}
+
+.navbar-home, .navbar-details {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: none;
+    color: black;
+}
