@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #F0F0F0;
+}
+
+#title, #date {
+  width: 13vw;
+  height: 5vh;
+  font-family: Verdana, sans-serif;
+  font-size: 1rem;
+  display: flex;
+  text-align: center;
+  align-content: center;
+  justify-content: center;
+  /* border: solid #90c211; */
+}
+
+#container{
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(5, minmax(200px, 1fr));
+  background-color: #2B2626;
+  /* border: solid #2B2626; */
+  /* border-radius: 0; */
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  /* border: solid rgb(59, 188, 218); */
+}
+
+#poster {
+  max-width: 80%;
+  border-radius: 10px;
+  /* border: solid 10px #434040; */
+}
