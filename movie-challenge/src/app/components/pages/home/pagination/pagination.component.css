@@ -1,0 +1,30 @@
+* {
+  display: flex;
+  justify-content: center;
+  background-color: #2B2626;
+}
+
+.page-item {
+  background-color: #5A2121;
+  text-decoration: none;
+  color: #0c0c0c;
+}
+
+span {
+  background-color: #662727;
+}
+
+.page-link {
+  width: 4vw;
+  height: 4vh;
+  background-color: #662727;
+  text-decoration: none;
+  color: #0c0c0c;
+  border: none;
+  cursor: pointer;
+}
+
+.selected-page {
+  background-color: #530d0d; 
+  color: #0c0c0c;
+}
