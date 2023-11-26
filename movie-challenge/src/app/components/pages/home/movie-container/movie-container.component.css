@@ -4,15 +4,17 @@
   color: #F0F0F0;
 }
 
+a {
+  display: flex;
+  justify-content: center;
+}
+
 #title, #date {
   width: 13vw;
   height: 5vh;
   font-family: Verdana, sans-serif;
   font-size: 1rem;
-  display: flex;
   text-align: center;
-  align-content: center;
-  justify-content: center;
   /* border: solid #90c211; */
 }
 
@@ -29,12 +31,27 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
   margin: 20px;
   /* border: solid rgb(59, 188, 218); */
 }
 
-#poster {
+.linkId, .linkId2 {
+  display: flex;
+  justify-content: center;
+}
+
+#poster, .not-found {
   max-width: 80%;
+  height: 90%;
   border-radius: 10px;
+  display: flex;
+  box-shadow: 20px 10px 50px #1f1d1d;
   /* border: solid 10px #434040; */
+}
+
+#poster:hover, .not-found:hover {
+  transform: scale(1.1);
+  transition: ease-in-out;
+  transition: 0.5s;
 }

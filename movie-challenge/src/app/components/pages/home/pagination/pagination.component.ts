@@ -12,10 +12,6 @@ export class PaginationComponent {
 
   constructor() {}
 
-  isSelectedPage(pageNumber: number): boolean {
-    return pageNumber === this.currentPage;
-  }  
-
   loadPage(page: number) {
     this.pageChanged.emit(page);
   }
@@ -38,5 +34,9 @@ export class PaginationComponent {
     this.currentPage = page;
     this.pageChanged.emit(page);
   }
+
+  isSelectedPage(pageNumber: number): boolean {
+    return pageNumber === this.currentPage;
+  }  
 
 }
