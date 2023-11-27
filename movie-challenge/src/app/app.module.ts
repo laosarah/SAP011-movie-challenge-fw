@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
  
@@ -9,21 +9,26 @@ import { FooterComponent } from './components/commons/footer/footer.component';
 import { TmdbService } from './services/tmdb/tmdb.service';
 import { HomeModule } from './components/pages/home/home.module';
 import { MovieDetailsModule } from './components/pages/movie-details/movie-details.module';
-// import { PaginationComponent } from './components/pages/home/pagination/pagination.component';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     FooterComponent,
-    // PaginationComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     HomeModule,
-    MovieDetailsModule
+    MovieDetailsModule,
+    NgxSpinnerModule,
+    BrowserAnimationsModule
+  ],
+  schemas: [
+    CUSTOM_ELEMENTS_SCHEMA
   ],
   providers: [
     TmdbService
