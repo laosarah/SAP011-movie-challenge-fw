@@ -1,13 +1,17 @@
 <div id="nav-bar">
     <div id="filter-order">
-        <select id="filter">
-            <option value="">Filtre uma Categoria</option>
-        </select>
-        <select id="order">
-            <option value="">Ordene a categoria</option>
+        <select id="filter" [(ngModel)]="selectedGenre" (change)="optionsChange()">
+            <option value="0">Filtre uma Categoria</option>
+            <option class="genre-options" *ngFor="let genre of genres" [value]="genre.id">{{ genre.name }}</option>
+        </select> 
+        <select id="order" [(ngModel)]="selectedOrder" (change)="optionsChange()">
+            <option class="order-options" *ngFor="let order of orderByList" [value]="order.order">{{ order.text }}</option>
         </select>
     </div>
-    <div id="search-group">
-        <input id="search" type="text" placeholder="Buscar"/><button id="btn-search">Search</button>
+    <div id="search-container">
+        <div id="search-group">
+            <input id="search" (input)="optionsChange()" [(ngModel)]="keyword" type="search" placeholder="Buscar"/>
+            <img id="search-img" src="assets/searchIcon.png" alt="search-icon">
+        </div>
     </div>
 </div>

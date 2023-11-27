@@ -1,9 +1,11 @@
-<div id="top-content">
-    <app-top-content></app-top-content>
-</div>
-<div id="app-movie-container">
-    <app-movie-container [movies]="movies"></app-movie-container>
-</div>
-<div>
+  <div id="top-content">
+    <app-top-content [genres]="genres" [orderBy]="orderBy" (filterChanged)="filterChanged($event)"></app-top-content>
+  </div>
+
+  <div id="app-movie-container">
+    <app-movie-container [movies]="movies" [genre]="selectedGenre" [order]="selectedOrder" [pageNumber]="currentPage.toString()"></app-movie-container>
+  </div>
+
+  <div id="app-pagination">
     <app-pagination [currentPage]="currentPage" [totalPages]="totalPages" (pageChanged)="onPageChanged($event)"></app-pagination>
-</div>
+  </div>
