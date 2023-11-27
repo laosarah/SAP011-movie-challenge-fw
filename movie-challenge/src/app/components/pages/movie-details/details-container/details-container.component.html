@@ -1,0 +1,18 @@
+<div id="details-container">
+  <div id="container" class="card mb-3">
+    <div class="row g-0">
+      <div class="col-md-4">
+        <img id="poster" src="https://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" class="img-fluid rounded-start" alt="poster">
+      </div>
+      <div class="col-md-8">
+        <div class="card-body">
+          <h5 class="card-title">{{ movie.title }}</h5>
+          <p>{{ movie.release_date | date: 'yyyy' }}</p>
+          <h5>{{ movie.vote_average }}</h5>
+          <p class="card-text"> Votos: {{ movie.vote_count | number:'1.0-2'}}</p>
+          <p class="card-overview">{{ movie.overview }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
