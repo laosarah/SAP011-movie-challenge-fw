@@ -1,6 +1,6 @@
 <div id="container">
   <div *ngFor="let movie of movies" id="cards">
-    <a class="linkID" [routerLink]="['/details/', movie.id ]" [queryParams]="{order:order,genre:genre}">
+    <a class="linkID" [routerLink]="['/details/', movie.id ]" [queryParams]="queryParams">
       <div class="linkId2" *ngIf="movie.poster_path; else noImage">
         <img id="poster" src="https://image.tmdb.org/t/p/w300/{{ movie.poster_path }}" class="card-img-top" alt="poster">
       </div>
