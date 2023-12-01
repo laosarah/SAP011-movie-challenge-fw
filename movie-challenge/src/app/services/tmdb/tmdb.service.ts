@@ -34,16 +34,7 @@ export class TmdbService {
     return this._HTTP.get(`${this._GENRELIST}?api_key=${this._KEY}`);
   }
 
-  getSelectedGenre(genreId: string): Observable<any> {
-    return this._HTTP.get(`${this._GENRE}&api_key=${this._KEY}&with_genres=${genreId}`);
-  }
-
-  getMovieOrder(sortBy: string): Observable<any> {
-    return this._HTTP.get(`${this._SORT}?api_key=${this._KEY}&sort_by=${sortBy}`);
-  }
-
   getMovieSearch(value: string): Observable<any> {
     return this._HTTP.get(`${this._SEARCH}?api_key=${this._KEY}&search=${value}`);
   }
- 
 }

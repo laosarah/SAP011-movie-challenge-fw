@@ -37,10 +37,6 @@ export class TopContentComponent {
   constructor() {
   }
 
-  ngOnInit(): void {}
-
-  ngOnDestroy(): void {}
-
   optionsChange() {
     this.filterChanged.emit({
       genreId: this.selectedGenre,

@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
   orderBy: any[] = [];
   moviesByGenre: any[] = [];
   selectedGenre?: string;
-  selectedOrder: string = 'popularity.desc';
+  selectedOrder?: string = 'popularity.desc';
   keyWord?: string;
 
   constructor(
@@ -24,28 +24,25 @@ export class HomeComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-      const queryParams = this._ROUTE.snapshot.queryParamMap;
-      const genreParam = queryParams.get('genre');
-      const orderParam = queryParams.get('order');
-      const pageNumberParam = queryParams.get('pageNumber');
+    const queryParams = this._ROUTE.snapshot.queryParamMap;
 
-    if (genreParam !== null) {
-      this.selectedGenre = genreParam.toString();
+    if (
+      queryParams.get('genre') !== null &&
+      queryParams.get('order') !== null &&
+      queryParams.get('pageNumber') !== null
+    ) {
+      this.selectedGenre = queryParams.get('genre')?.toString();
+      this.selectedOrder = queryParams.get('order')?.toString();
+
+      const pageNumberParam = queryParams.get('pageNumber');
+      this.currentPage = pageNumberParam !== null ? parseInt(pageNumberParam, 10) : 1;
     }
-    if (orderParam !== null) {
-      this.selectedOrder = orderParam.toString();
-    }
-    if (pageNumberParam !== null) {
-      const parsedPageNumber = parseInt(pageNumberParam, 10);
-      this.currentPage = isNaN(parsedPageNumber) ? 1 : parsedPageNumber;
-    }
-    
+
     this.loadMoviesByPage();
     this.loadGenres();
   }
 
   onPageChanged(page: number) {
-    // console.log(page);
     this.currentPage = page;
     this.loadMoviesByPage();
   }
@@ -67,15 +64,6 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  loadMoviesWithGenre() {
-    this._SERVICE.getMoviesByPage(this.currentPage, this.selectedGenre).subscribe({
-      next: (data: any) => {
-        this.totalPages = data.total_pages;
-        this.movies = data.results;
-      } 
-    })
-  }
-
   loadGenres() {
     this._SERVICE.getMovieGenre().subscribe({
       next: (data: any) => {
@@ -84,18 +72,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  sortBy(sortBy: string) {
-    sortBy = sortBy || 'popularity.desc';
-    this._SERVICE.getMovieOrder(sortBy).subscribe({
-      next: (data: any) => {
-        console.log('lista ordenada', data);
-        this.orderBy = data.results;
-      }
-    });
-  }
-
   filterChanged(event: { genreId: string, orderBy: string, keyword: string }) {
-    console.log('Filter Changed: ', event);
     const { genreId, orderBy, keyword } = event;
     this.selectedGenre = genreId;
     this.selectedOrder = orderBy;
@@ -103,14 +80,4 @@ export class HomeComponent implements OnInit {
     this.loadMoviesByPage();
   }
 
-  moviesWithGenre(genreId: string) {
-    this._SERVICE.getSelectedGenre(genreId).subscribe({
-      next: (data: any) => {
-        this.moviesByGenre = data.results;
-        console.log("Filmes filtrados por genero:", data);
-        this.totalPages = data.total_pages;
-        this.movies = data.results; 
-      }
-    })
-  }
 }
